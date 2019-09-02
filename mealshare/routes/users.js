@@ -6,7 +6,6 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
   db.getList().then(list => {
-    console.log(list)
     res.render('index', {list})
   })
 })
