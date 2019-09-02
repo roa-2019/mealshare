@@ -20,9 +20,11 @@ router.post('/add-ingredient', (req, res) => {
   db.addIngredient(formData).then(() => res.status(201).redirect('/'))
 })
 
-router.delete('/delete-ingredient/:id', (req, res) => {
+router.delete('/v1/ingredients/:id', (req, res) => {
   let id = req.params.id
-  db.deleteIngredient(id)
+  db.deleteIngredient(id).then(() => {
+    res.status(201).redirect('/')
+  })
 })
 
 function capitalizeFirstLetter(string) {

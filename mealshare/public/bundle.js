@@ -99,11 +99,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! superagent */ "./node_modules/superagent/lib/client.js");
 /* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(superagent__WEBPACK_IMPORTED_MODULE_0__);
 
-function launchApp() {}
+function launchApp() {
+  const deleteBtns = document.querySelectorAll('.delete-btn');
+  deleteBtns.forEach(btn => {
+    btn.addEventListener('click', handleDelete);
+  });
+}
 
-function deleteUser(userId) {
-  return superagent__WEBPACK_IMPORTED_MODULE_0___default.a.delete('/v1/users/' + userId).catch(e => {
-    console.log('poosie', e);
+function handleDelete(e) {
+  const listId = e.target.dataset.id;
+  deleteUser(listId).then(() => {
+    document.location = '/';
+  });
+}
+
+function deleteUser(listId) {
+  return superagent__WEBPACK_IMPORTED_MODULE_0___default.a.delete('/v1/ingredients/' + listId).catch(e => {
+    console.log('oppsie', e.message);
   });
 }
 
