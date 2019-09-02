@@ -3,13 +3,13 @@ const config = require('./knexfile')[environment]
 const connection = require('knex')(config)
 
 module.exports = {
+  getList,
   getUser,
-  getUsers,
   addIngredient,
   deleteIngredient
 }
 
-function getUsers(db = connection) {
+function getList(db = connection) {
   return db('ingredients').select()
 }
 

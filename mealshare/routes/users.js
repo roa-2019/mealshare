@@ -5,7 +5,10 @@ const db = require('../db')
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  res.render('index')
+  db.getList().then(list => {
+    console.log(list)
+    res.render('index', {list})
+  })
 })
 
 router.post('/add-ingredient', (req, res) => {

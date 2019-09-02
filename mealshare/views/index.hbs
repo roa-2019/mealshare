@@ -27,7 +27,8 @@
             <span class="small-text">Who</span>
          </p>
          <ul>
-            <li class="flex-sb">
+            {{>list}}
+            {{!-- <li class="flex-sb">
                <span>1 x Onion</span>
                <span>Jane</span>
             </li>
@@ -38,7 +39,7 @@
             <li class="flex-sb">
                <span>1 x Onion</span>
                <span>Bob</span>
-            </li>
+            </li> --}}
             <li>
                <form action="/add-ingredient" method="post" class="flex-sb">
                   <div class="input-ingredient">
