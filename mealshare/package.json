@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "knex": "knex",
-    "dev": "nodemon index",
+    "dev": "nodemon --watch server & webpack --watch client",
     "start": "node index",
     "test": "jest"
   },
@@ -27,8 +27,15 @@
     "sqlite3": "^4.1.0"
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.6",
     "cheerio": "1.0.0-rc.2",
     "jest": "^24.6",
-    "supertest": "^4.0.2"
+    "superagent": "^5.1.0",
+    "supertest": "^4.0.2",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0"
   }
 }

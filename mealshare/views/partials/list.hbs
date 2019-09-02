@@ -1,6 +1,6 @@
 {{#each list}}
-<li class="flex-sb">
-   <span>{{quantity}} x {{ingredient}}</span>
-   <span>{{name}}</span>
+<li class="flex-sb list-item">
+   <p class="inline-b">{{quantity}} x {{ingredient}}</p>
+   <p class="inline-b">{{name}} <button class="delete-btn" data-id='{{id}}'>X</button></p>
 </li>
 {{/each}}

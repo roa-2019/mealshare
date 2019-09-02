@@ -14,10 +14,9 @@
             <span>Fri 11 - 11</span>
          </div>
          <div class="ingredientsList-container">
-            <p>2 x Onions</p>
-            <p>2 x Carrots</p>
-            <p>1 x Celery</p>
-            <p>3 x Potatoes</p>
+            {{#each list}}
+            <p>{{quantity}} x {{ingredient}}</p>
+            {{/each}}
          </div>
       </div>
 
@@ -28,18 +27,6 @@
          </p>
          <ul>
             {{>list}}
-            {{!-- <li class="flex-sb">
-               <span>1 x Onion</span>
-               <span>Jane</span>
-            </li>
-            <li class="flex-sb">
-               <span>1 x Onion</span>
-               <span>Bob</span>
-            </li>
-            <li class="flex-sb">
-               <span>1 x Onion</span>
-               <span>Bob</span>
-            </li> --}}
             <li>
                <form action="/add-ingredient" method="post" class="flex-sb">
                   <div class="input-ingredient">

@@ -33,6 +33,11 @@ h2 {
   font-size: 14px;
 }
 
+.inline-b {
+  display: inline-block;
+  margin: 0;
+}
+
 /* List */
 ul {
   padding: 0;
@@ -63,6 +68,26 @@ li {
 .list-container {
   width: 50%;
   padding: 0 3rem;
+}
+
+/* Btns */
+.delete-btn {
+  color: #ff0000;
+  cursor: pointer;
+  margin-left: 2rem;
+  display: none;
+  margin-right: -30px;
+}
+
+.list-item:hover .delete-btn {
+  display: inline-block;
+}
+
+.list-item:hover .inline-b {
+  -webkit-animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  color: #969696;
+  font-style: italic;
 }
 
 /* On the menu */
@@ -118,4 +143,25 @@ input[type='submit'] {
 .effect-1:focus ~ .focus-border {
   width: 100%;
   transition: 0.4s;
+}
+
+@-webkit-keyframes slide-left {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-50px);
+    transform: translateX(-50px);
+  }
+}
+@keyframes slide-left {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-50px);
+    transform: translateX(-50px);
+  }
 }
