@@ -7,7 +7,8 @@
     "knex": "knex",
     "dev": "nodemon --watch server & webpack --watch client",
     "start": "node index",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "webpack && knex migrate:latest"
   },
   "repository": {
     "type": "git",
