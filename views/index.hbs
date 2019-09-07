@@ -9,9 +9,9 @@
             alt="food" />
          <div class="flex-sb">
             <span class="meal-name" contenteditable="true">
-               Minestrone
+               {{mealDetails.recipe_name}}
             </span>
-            <span contenteditable="true">Fri 11 - 11</span>
+            <span contenteditable="true">{{mealDetails.date}}</span>
          </div>
          <div class="ingredientsList-container">
             {{#each list}}

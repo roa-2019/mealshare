@@ -5,7 +5,9 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
   db.getList().then(list => {
-    res.render('index', { list })
+    db.getMealDetails().then(mealDetails =>
+      res.render('index', { list, mealDetails })
+    )
   })
 })
 

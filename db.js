@@ -4,7 +4,7 @@ const connection = require('knex')(config)
 
 module.exports = {
   getList,
-  getUser,
+  getMealDetails,
   addIngredient,
   deleteIngredient
 }
@@ -13,9 +13,9 @@ function getList(db = connection) {
   return db('ingredients').select()
 }
 
-function getUser(id, db = connection) {
-  return db('ingredients')
-    .where('id', id)
+function getMealDetails(db = connection) {
+  return db('mealDetails')
+    .select()
     .first()
 }
 
