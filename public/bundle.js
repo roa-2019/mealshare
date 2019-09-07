@@ -104,6 +104,7 @@ function launchApp() {
   deleteBtns.forEach(btn => {
     btn.addEventListener('click', handleDelete);
   });
+  submitBtns.forEach(btn => btn.addEventListener('keydown', handleEnter));
 }
 
 function handleDelete(e) {
@@ -113,11 +114,26 @@ function handleDelete(e) {
   });
 }
 
+const submitBtns = document.querySelectorAll('input[type="text"]');
+
+function handleEnter(e) {
+  if (e.keyCode == 13 && e.shiftKey == false) {
+    this.form.submit();
+  }
+}
+
 function deleteUser(listId) {
   return superagent__WEBPACK_IMPORTED_MODULE_0___default.a.delete('/v1/ingredients/' + listId).catch(e => {
     console.log('oppsie', e.message);
   });
 }
+
+const content = document.querySelector('[contenteditable]'); // 1. Listen for changes of the contenteditable element
+
+content.addEventListener('input', function (event) {
+  // 2. Retrive the text from inside the element
+  console.log(content.innerHTML);
+});
 
 /***/ }),
 
