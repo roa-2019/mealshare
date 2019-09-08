@@ -97,7 +97,6 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "launchApp", function() { return launchApp; });
 /* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api */ "./client/api.js");
-// import request from 'superagent'
 
 function launchApp() {
   const deleteBtns = document.querySelectorAll('.delete-btn');
@@ -127,6 +126,7 @@ function handleEdit(e) {
   const editables = document.querySelectorAll('.editable');
   editables.forEach(editable => {
     editable.setAttribute('contenteditable', true);
+    editable.classList.add('edit');
   });
   e.target.classList.add('hide');
   const saveBtn = document.querySelector('#save-mealDetails');

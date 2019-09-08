@@ -35,7 +35,15 @@ router.post('/postNewMeal', (req, res) => {
     recipe_name: req.body.recipe_name
   }
 
-  db.addNewMeal(newMeal).then(res.status(201).redirect('/'))
+  db.getMealDetails().then(latestMeal => {
+    const { date, recipe_name } = latestMeal
+
+    if (date === newMeal.date && recipe_name === newMeal.recipe_name) {
+      return res.status(201).redirect('/')
+    }
+
+    return db.addNewMeal(newMeal).then(res.status(201).redirect('/'))
+  })
 })
 
 function capitalizeFirstLetter(string) {

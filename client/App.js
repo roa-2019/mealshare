@@ -1,4 +1,3 @@
-// import request from 'superagent'
 import * as api from './api'
 
 export function launchApp() {
@@ -33,6 +32,7 @@ function handleEdit(e) {
 
   editables.forEach(editable => {
     editable.setAttribute('contenteditable', true)
+    editable.classList.add('edit')
   })
 
   e.target.classList.add('hide')
@@ -56,4 +56,3 @@ function saveEdit() {
 
   api.addMealDetails(newMealEntry).then(() => (document.location = '/'))
 }
-

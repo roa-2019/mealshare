@@ -43,7 +43,8 @@ h2 {
 }
 
 .edit {
-  color: #555555;
+  color: #797979;
+  border-bottom: 1px dotted #ff0000;
 }
 
 /* List */
@@ -165,6 +166,7 @@ input[type='submit'] {
     transform: translateX(-20px);
   }
 }
+
 @keyframes slide-left {
   0% {
     -webkit-transform: translateX(0);
