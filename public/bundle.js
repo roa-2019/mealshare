@@ -96,8 +96,8 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "launchApp", function() { return launchApp; });
-/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! superagent */ "./node_modules/superagent/lib/client.js");
-/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(superagent__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api */ "./client/api.js");
+// import request from 'superagent'
 
 function launchApp() {
   const deleteBtns = document.querySelectorAll('.delete-btn');
@@ -112,7 +112,7 @@ function launchApp() {
 
 function handleDelete(e) {
   const listId = e.target.dataset.id;
-  deleteUser(listId).then(() => {
+  _api__WEBPACK_IMPORTED_MODULE_0__["deleteUser"](listId).then(() => {
     document.location = '/';
   });
 }
@@ -141,13 +141,28 @@ function saveEdit() {
     recipe_name,
     mealDetails_date
   };
-  addMealDetails(newMealEntry).then(() => document.location = '/');
+  _api__WEBPACK_IMPORTED_MODULE_0__["addMealDetails"](newMealEntry).then(() => document.location = '/');
 }
+
+/***/ }),
+
+/***/ "./client/api.js":
+/*!***********************!*\
+  !*** ./client/api.js ***!
+  \***********************/
+/*! exports provided: addMealDetails, deleteUser */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addMealDetails", function() { return addMealDetails; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteUser", function() { return deleteUser; });
+/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! superagent */ "./node_modules/superagent/lib/client.js");
+/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(superagent__WEBPACK_IMPORTED_MODULE_0__);
 
 function addMealDetails(newMealEntry) {
   return superagent__WEBPACK_IMPORTED_MODULE_0___default.a.post('/postNewMeal').send(newMealEntry).catch(e => console.log('opps, e.message'));
 }
-
 function deleteUser(listId) {
   return superagent__WEBPACK_IMPORTED_MODULE_0___default.a.delete('/v1/ingredients/' + listId).catch(e => {
     console.log('oppsie', e.message);

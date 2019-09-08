@@ -42,6 +42,10 @@ h2 {
   display: none;
 }
 
+.edit {
+  color: #555555;
+}
+
 /* List */
 ul {
   padding: 0;

@@ -1,4 +1,5 @@
-import request from 'superagent'
+// import request from 'superagent'
+import * as api from './api'
 
 export function launchApp() {
   const deleteBtns = document.querySelectorAll('.delete-btn')
@@ -16,7 +17,7 @@ export function launchApp() {
 function handleDelete(e) {
   const listId = e.target.dataset.id
 
-  deleteUser(listId).then(() => {
+  api.deleteUser(listId).then(() => {
     document.location = '/'
   })
 }
@@ -53,18 +54,6 @@ function saveEdit() {
     mealDetails_date
   }
 
-  addMealDetails(newMealEntry).then(() => (document.location = '/'))
+  api.addMealDetails(newMealEntry).then(() => (document.location = '/'))
 }
 
-function addMealDetails(newMealEntry) {
-  return request
-    .post('/postNewMeal')
-    .send(newMealEntry)
-    .catch(e => console.log('opps, e.message'))
-}
-
-function deleteUser(listId) {
-  return request.delete('/v1/ingredients/' + listId).catch(e => {
-    console.log('oppsie', e.message)
-  })
-}
