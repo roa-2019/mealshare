@@ -38,6 +38,10 @@ h2 {
   margin: 0;
 }
 
+.hide {
+  display: none;
+}
+
 /* List */
 ul {
   padding: 0;

@@ -6,6 +6,7 @@ module.exports = {
   getList,
   getMealDetails,
   addIngredient,
+  addNewMeal,
   deleteIngredient
 }
 
@@ -16,6 +17,7 @@ function getList(db = connection) {
 function getMealDetails(db = connection) {
   return db('mealDetails')
     .select()
+    .orderBy('id', 'desc')
     .first()
 }
 
@@ -25,6 +27,10 @@ function addIngredient(formData, db = connection) {
     ingredient: formData.ingredient,
     name: formData.name
   })
+}
+
+function addNewMeal(newMealData, db = connection) {
+  return db('mealDetails').insert(newMealData)
 }
 
 function deleteIngredient(id, db = connection) {

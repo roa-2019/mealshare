@@ -104,7 +104,10 @@ function launchApp() {
   deleteBtns.forEach(btn => {
     btn.addEventListener('click', handleDelete);
   });
+  const submitBtns = document.querySelectorAll('input[type="text"]');
   submitBtns.forEach(btn => btn.addEventListener('keydown', handleEnter));
+  const editBtn = document.querySelector('#edit-mealDetails');
+  editBtn.addEventListener('click', handleEdit);
 }
 
 function handleDelete(e) {
@@ -114,12 +117,35 @@ function handleDelete(e) {
   });
 }
 
-const submitBtns = document.querySelectorAll('input[type="text"]');
-
 function handleEnter(e) {
   if (e.keyCode == 13 && e.shiftKey == false) {
     this.form.submit();
   }
+}
+
+function handleEdit(e) {
+  const editables = document.querySelectorAll('.editable');
+  editables.forEach(editable => {
+    editable.setAttribute('contenteditable', true);
+  });
+  e.target.classList.add('hide');
+  const saveBtn = document.querySelector('#save-mealDetails');
+  saveBtn.classList.remove('hide');
+  saveBtn.addEventListener('click', saveEdit);
+}
+
+function saveEdit() {
+  const recipe_name = document.querySelector('#recipe_name').innerHTML.replace(/\n/g, '').replace(/\s/g, '');
+  const mealDetails_date = document.querySelector('#mealDetails_date').innerHTML;
+  const newMealEntry = {
+    recipe_name,
+    mealDetails_date
+  };
+  addMealDetails(newMealEntry).then(() => document.location = '/');
+}
+
+function addMealDetails(newMealEntry) {
+  return superagent__WEBPACK_IMPORTED_MODULE_0___default.a.post('/postNewMeal').send(newMealEntry).catch(e => console.log('opps, e.message'));
 }
 
 function deleteUser(listId) {
@@ -127,13 +153,6 @@ function deleteUser(listId) {
     console.log('oppsie', e.message);
   });
 }
-
-const content = document.querySelector('[contenteditable]'); // 1. Listen for changes of the contenteditable element
-
-content.addEventListener('input', function (event) {
-  // 2. Retrive the text from inside the element
-  console.log(content.innerHTML);
-});
 
 /***/ }),
 

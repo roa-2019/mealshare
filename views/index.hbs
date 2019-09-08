@@ -8,16 +8,18 @@
             src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fd3cizcpymoenau.cloudfront.net%2Fimages%2F35047%2FSFS_hearty_minestrone-16.jpg&f=1"
             alt="food" />
          <div class="flex-sb">
-            <span class="meal-name" contenteditable="true">
+            <span class="meal-name editable" id="recipe_name">
                {{mealDetails.recipe_name}}
             </span>
-            <span contenteditable="true">{{mealDetails.date}}</span>
+            <span class="editable" id="mealDetails_date">{{mealDetails.date}}</span>
          </div>
          <div class="ingredientsList-container">
             {{#each list}}
             <p>{{quantity}} x {{ingredient}}</p>
             {{/each}}
          </div>
+         <button id="edit-mealDetails">Edit</button>
+         <button id="save-mealDetails" class="hide">Save</button>
       </div>
 
       <div class="list-container">

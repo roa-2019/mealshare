@@ -5,9 +5,9 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
   db.getList().then(list => {
-    db.getMealDetails().then(mealDetails =>
+    db.getMealDetails().then(mealDetails => {
       res.render('index', { list, mealDetails })
-    )
+    })
   })
 })
 
@@ -27,6 +27,15 @@ router.delete('/v1/ingredients/:id', (req, res) => {
   db.deleteIngredient(id).then(() => {
     res.status(201).redirect('/')
   })
+})
+
+router.post('/postNewMeal', (req, res) => {
+  const newMeal = {
+    date: req.body.mealDetails_date,
+    recipe_name: req.body.recipe_name
+  }
+
+  db.addNewMeal(newMeal).then(res.status(201).redirect('/'))
 })
 
 function capitalizeFirstLetter(string) {
