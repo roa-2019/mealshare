@@ -21,6 +21,7 @@ function getMealDetails(db = connection) {
     .first()
 }
 
+//formData doesn't seem like a good name for the variable - ingredient perhaps?
 function addIngredient(formData, db = connection) {
   return db('ingredients').insert({
     quantity: formData.quantity,

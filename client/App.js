@@ -6,6 +6,7 @@ export function launchApp() {
     btn.addEventListener('click', handleDelete)
   })
 
+  //this will get all the text inputs, not submit buttons - needs another var name
   const submitBtns = document.querySelectorAll('input[type="text"]')
   submitBtns.forEach(btn => btn.addEventListener('keydown', handleEnter))
 
@@ -16,6 +17,7 @@ export function launchApp() {
 function handleDelete(e) {
   const listId = e.target.dataset.id
 
+  //works but would be better if didn't refresh the page
   api.deleteUser(listId).then(() => {
     document.location = '/'
   })
